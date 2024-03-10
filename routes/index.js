@@ -9,4 +9,4 @@ users.get('/', function(req, res, next) {
   });
 users.post('/register', userController.create);
 users.post('/login', userController.authenticate);
-module.exports = users;
+module.exports = users;  
