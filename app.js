@@ -1,25 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
-var path = require('path');
 const mongoose = require('mongoose');
-var ejs = require('ejs');
-
 const app = express();
+ 
+const users = require('./routes/users');
+const authenticateToken = require('./middleware/authenticateToken');
+const galleries = require('./routes/galleries'); 
+
 // BODY PARSER
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');	
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/views'));
 
 // ROUTES
-const index = require('./routes/index');
-app.use('/', index);
-
-// app.use('/users', users);
-// app.use('/checkloginuser', authenticateToken,users);
-// app.use('/entertainment' , authenticateToken, movies);
+app.get('/', (req, res) => {
+  //res.send('Welcome to my Movie API!')
+});
+ 
+app.use('/users', users);
+app.use('/checkloginuser', authenticateToken,users);
+app.use('/entertainment' , authenticateToken, galleries);
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,19 +28,20 @@ app.use((req, res, next) => {
   );
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
-}); 
+});
+
  
 // CUSTOM ERROR FUNCTION
-app.use((err, request, res, next) => {
-    console.error(err);
-    res.status(500).send('Something is broken!');
-});
+// app.use((err, request, res, next) => {
+//     console.error(err);
+//     res.status(500).send('Something is broken!');
+// });
 
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(`${process.env.CONNECTION_URI}`, {
       useNewUrlParser: true,
-      dbName: 'custommongodb',
+      dbName: 'customnodedb',
     });
     console.log(`MongoDB Connected Successfully`);
   } catch (error) {
