@@ -1,38 +1,44 @@
 {
-  "name": "showcasemanagement",
+  "name": "artistgallery",
   "version": "0.0.1",
-  "description": "showcasemanagement",
+  "description": "",
   "main": "app.js",
+  "engines": {
+    "node": ">=18.12.0"
+  },
   "scripts": {
-   "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
     "start-server": "node app.js",
     "start:dev": "nodemon app.js"
+  },
+  "author": "ramya",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.4",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ramyaroycodeclouds/customnode.git"
   },
   "keywords": [
-    "showcasemanagement"
+    "artist",
+    "gallery",
+    "management"
   ],
-  "author": "ramya",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ramyaroycodeclouds/customnode/issues"
   },
-  "homepage": "https://github.com/ramyaroycodeclouds/customnode#readme",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.2",
-    "dotenv": "^8.6.0",
-    "ejs": "^3.0.1",
-    "express": "^4.18.3",
-    "express-session": "^1.18.0",
-    "express-validator": "^7.0.1",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.2.0",
-    "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.1.0",
-    "path": "^0.12.7"
-  }
+  "homepage": "https://github.com/ramyaroycodeclouds/customnode#readme"
 }
